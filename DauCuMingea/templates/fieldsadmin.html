@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block title %}
+Adaugare teren de tenis
+{% endblock %}
+{% block content %}
+    <body class="text-center">
+    {% if current_user.admin == True %}
+    <div class="container" >
+        <form method="POST" class="form-additem" style="color:white">
+            <!--action="http://127.0.0.1:5000/additem" enctype="multipart/form-data"-->
+            {{ field_form.hidden_tag() }}
+            <img class="mb-4" src="https://www.recreationalgroup.com/cmss_files/imagelibrary/XG_Sport_9.jpg" height="250px">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Adaugare teren de tenis
+            </h1>
+            <br>
+            {{ field_form.name.label() }}
+            {{ field_form.name(class="form-control", placeholder="Nume terenului de tenis") }}
+
+            {{ field_form.price.label() }}
+            {{ field_form.price(class="form-control", placeholder="Pretul de inchiriere") }}
+
+            {{ field_form.location.label() }}
+            {{ field_form.location(class="form-control", placeholder="Locatia terenului") }}
+
+            {{ field_form.description.label() }}
+            {{ field_form.description(class="form-control", placeholder="Descrierea terenului") }}
+
+            {{ field_form.photo.label() }}
+            {{ field_form.photo(class="form-control", placeholder="Link poza") }}
+
+            <br>
+
+            <br>
+                {{ field_form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+            <br>
+
+            <br>
+
+        </form>
+    </div>
+    {% else %}
+    <h1 class='text-cente'>Numai admini au voie aici</h1>
+    {% endif %}
+
+</body>
+{% endblock %}

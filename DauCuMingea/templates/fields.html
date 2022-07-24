@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+{% block title %}
+Here are the tennis fields
+{% endblock %}
+{% block content %}
+
+<style>
+.card {
+  color: black;
+}
+
+.container-search{
+position:relative;
+left:815px;
+padding: 20px;
+width: 300px;
+resize: horizontal;
+}
+</style>
+
+<!-- Carousel wrapper -->
+
+<form method="POST,GET">
+  {{ search_form.hidden_tag() }}
+<div class="container-search">
+  <div class="input-group">
+    <input type="search" id="search_name" name="search_name" class="form-control" />
+    {{ search_form.submit(class="btn btn-sm btn-block btn-primary") }}
+</div>
+</div>
+</form>
+
+<div
+  id="carouselMultiItemExample"
+  class="carousel slide carousel-dark text-center"
+  data-mdb-ride="carousel"
+>
+
+  <div class="d-flex justify-content-center mb-4">
+  </div>
+
+  <!-- Inner -->
+  <div class="carousel-inner py-4">
+
+    <!-- Single item -->
+      <div class="container">
+        <div class="row">
+          {% for tennis_field in tennis_fields %}
+          {% include 'modals/renting.html' %}
+
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="{{ tennis_field.photo }}"
+                class="card-img-top"
+                alt="Sunset Over the Sea"
+                height="232px"
+              />
+              <div class="card-body">
+                <h5 class="card-title">{{ tennis_field.name }}</h5>
+                <p class="card-text">
+                  {{ tennis_field.description }}
+                </p>
+                <p class="card-text">Pret inchiriere pe zi: {{ tennis_field.price }} Ron</p>
+
+                {% if current_user.is_authenticated%}
+                {% if current_user.admin == True %}
+
+                <form method="post">
+
+
+
+                  {{ tennis_field_delete_form.hidden_tag() }}
+
+                  <input id="delete_tennis_field" name="delete_tennis_field" type="hidden" value="{{ tennis_field.id }}">
+
+                  {{ tennis_field_delete_form.submit(class="btn btn-danger") }}
+
+                </form>
+
+                {% endif %}
+
+                <button type="button" class="btn btn-primary" style="margin-bottom: 5px"
+                                  data-toggle="modal" data-target="#Modal-tennis_field-{{ tennis_field.id }}">
+                              Ichiriere
+                          </button>
+
+                {% else %}
+                <p style="color:red">
+                  Va rog sa va logati pentru a inchiria un teren
+                </p>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+
+        </div>
+      </div>
+
+    <!-- Single item -->
+    <div class="carousel-item">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-12">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+                class="card-img-top"
+                alt="Fissure in Sandstone"
+                height="232px"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/185.webp"
+                class="card-img-top"
+                alt="Storm Clouds"
+                height="232px"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/186.webp"
+                class="card-img-top"
+                alt="Hot Air Balloons"
+                height="232px"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Single item -->
+    <div class="carousel-item">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/187.webp"
+                class="card-img-top"
+                alt="Peaks Against the Starry Sky"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/188.webp"
+                class="card-img-top"
+                alt="Bridge Over Water"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 mb-4 mb-lg-0 d-none d-lg-block">
+            <div class="card">
+              <img
+                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/189.webp"
+                class="card-img-top"
+                alt="Purbeck Heritage Coast"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  Some quick example text to build on the card title and make up the bulk
+                  of the card's content.
+                </p>
+                <a href="#!" class="btn btn-primary">Button</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Inner -->
+</div>
+
+<!-- Carousel wrapper -->
+
+{% endblock %}

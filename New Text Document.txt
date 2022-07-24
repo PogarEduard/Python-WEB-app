@@ -1,0 +1,11 @@
+pip install flask_login
+pip install flask
+pip install flask_sqlachemy
+pip install flask_bcrypt
+pip install flask_wtf
+
+
+raluca.gabor@nexuslearninglab.ro
+
+
+binance : pogareduard@yahoo.com / Smecheredi1-

@@ -1,0 +1,188 @@
+{% extends 'base.html' %}
+{% block title %}
+    Home Page
+{% endblock %}
+{% block content %}
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 819px}
+
+    /* Set gray background color and 100% height */
+<!--    .sidenav {-->
+<!--      padding-top: 20px;-->
+<!--      background-color: #f1f1f1;-->
+<!--      height: 100%;-->
+<!--    }-->
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+      }
+      .row.content {height:auto;}
+    }
+  </style>
+<body>
+
+<div class="container-fluid text-center">
+  <div class="row content">
+
+    <div class="col-sm-2 sidenav">
+      <div class="row" style="margin-top:150px; margin-right:20px; margin-top:60px">
+        <table class="table table-hover table-dark">
+          <tr>
+            <td>
+              <a href="{{ ads1.href }}">
+              <img class="box" src="{{ ads1.src }}" width="100%" height="100">
+                <h7>{{ ads1.description}}</h7>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="{{ ads2.href }}">
+              <img class="box" src="{{ ads2.src }}" width="100%" height="100">
+                <h7>{{ ads2.description}}</h7>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="{{ ads3.href }}">
+              <img class="box" src="{{ ads3.src }}" width="100%" height="100">
+                <h7>{{ ads3.description}}</h7>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="{{ ads4.href }}">
+              <img class="box" src="{{ ads4.src }}" width="100%" height="100">
+                <h7>{{ ads4.description}}</h7>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-sm-8 text-left">
+      <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+
+    <div class="container-fluid text-center">
+      <h1>Bine ati venit pe siteul DauCuMingea</h1>
+    </div>
+
+
+    <div class="carousel-item active" data-interval="10000">
+      <a href="{{ url_for('fields_page') }}">
+        <div class="container">
+      <img src="{{ tennis_fields1.photo }}" class="d-block w-100" width="100%" height="200%">
+        </div>
+      </a>
+      <div class="carousel-caption d-none d-md-block">
+      <h5>Nume: {{ tennis_fields1.name }}</h5>
+      <p>Descriptie: {{ tennis_fields1.description }}</p>
+      </div>
+    </div>
+
+    <div class="carousel-item" data-interval="2000">
+      <a href="{{ url_for('fields_page') }}">
+         <div class="container">
+      <img src="{{ tennis_fields2.photo }}" class="d-block w-100" width="100%" height="200%">
+         </div>
+      </a>
+      <div class="carousel-caption d-none d-md-block">
+      <h5>Nume: {{ tennis_fields2.name }}</h5>
+      <p>Descriptie: {{ tennis_fields2.description }}</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <a href="{{ url_for('fields_page') }}">
+         <div class="container">
+      <img src="{{ tennis_fields3.photo }}" class="d-block w-100" width="100%" height="200%">
+         </div>
+      </a>
+      <div class="carousel-caption d-none d-md-block">
+      <h5>Nume: {{ tennis_fields3.name }}</h5>
+      <p>Descriptie: {{ tennis_fields3.description }}</p>
+      </div>
+    </div>
+
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+    </div>
+    <div class="col-sm-2 sidenav">
+      <div class="well">
+
+      <div class="row" style="margin-top:150px; margin-left:20px; margin-top:60px ">
+        <table class="table table-hover table-dark">
+          <tr>
+            <td>
+              <a href="{{ ads5.href }}">
+              <img class="box" src="{{ ads5.src }}" width="100%" height="100">
+                <h7>{{ ads5.description}}</h7>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="{{ ads6.href }}">
+              <img class="box" src="{{ ads6.src }}" width="100%" height="100">
+                <h8>{{ ads6.description}}</h8>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="{{ ads7.href }}">
+              <img class="box" src="{{ ads7.src }}" width="100%" height="100">
+                <h7>{{ ads7.description}}</h7>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a href="{{ ads8.href }}">
+              <img class="box" src="{{ ads8.src }}" width="100%" height="100">
+                <h7>{{ ads8.description}}</h7>
+              </a>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+       </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <h5>contant</h5>
+</footer>
+
+</body>
+{% endblock %}

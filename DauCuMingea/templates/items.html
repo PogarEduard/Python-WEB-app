@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}
+Echipamente de tenis
+{% endblock %}
+{% block content %}
+
+<style>
+    .btn-delete{
+    position:relative;
+    left:15%;
+    }
+    .btn-buy{
+    position:relative;
+    left:14%;
+    }
+</style>
+
+<div class="row" style="margin-top:20px; margin-left:20px">
+       <h2>Available items on the Market</h2>
+       <br>
+      <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <!-- Your Columns HERE -->
+               <th scope="col">ID</th>
+               <th scope="col">Nume</th>
+               <th scope="col">Pret</th>
+               <th scope="col">Descriere</th>
+                <th scope="col">Fotografie</th>
+            </tr>
+         </thead>
+         <tbody>
+            <!-- Your rows inside the table HERE: -->
+            {% for item in items %}
+            <tr>
+               <td>{{ item.id }}</td>
+               <td>{{ item.name }}</td>
+               <td>{{ item.price }} Ron</td>
+                <td>{{ item.description }}</td>
+                <td>
+                    <img class="box" src="{{ item.photo }}" width=double.infinity height="80">
+                </td>
+               <td>
+                   {% if current_user.is_authenticated %}
+                   {% if current_user.admin == True %}
+
+                <form method="post">
+
+                  {{ item_delete_form .hidden_tag() }}
+
+                  <input id="item_to_delete" name="item_to_delete" type="hidden" value="{{ item.id }}">
+
+                  {{ item_delete_form.submit(class="btn-delete btn-danger btn-sm") }}
+
+                </form>
+                {% endif %}
+                   <form method="post">
+
+
+                   <input id="item_name" name="item_name" type="hidden" value="{{ item.name }}">
+                   {{ item_purchase_form.submit(class="btn-delete btn-primary btn-sm") }}
+
+                   {% endif %}
+                       </form>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+
+{% endblock %}

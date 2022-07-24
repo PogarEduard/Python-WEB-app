@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}
+Adaugare reclama
+{% endblock %}
+{% block content %}
+    {% if current_user.admin == True %}
+
+    <body class="text-center">
+    <div class="container" >
+        <form method="POST" class="form-additem" style="color:white">
+            <!--action="http://127.0.0.1:5000/additem" enctype="multipart/form-data"-->
+            {{ ads_form.hidden_tag() }}
+            <img class="mb-4" src="https://www.recreationalgroup.com/cmss_files/imagelibrary/XG_Sport_9.jpg" height="250px">
+            <h1 class="h3 mb-3 font-weight-normal">
+                Adaugare reclama
+            </h1>
+            <br>
+            {{ ads_form.src.label() }}
+            {{ ads_form.src(class="form-control", placeholder="Linkul Pozei") }}
+
+            {{ ads_form.href.label() }}
+            {{ ads_form.href(class="form-control", placeholder="Unde doriti sa se duca la click") }}
+
+            {{ ads_form.description.label() }}
+            {{ ads_form.description(class="form-control", placeholder="O scurta descriere") }}
+
+
+            <br>
+                {{ ads_form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+            <br>
+
+            <!-- btn = buton , btn-lg = buton mare , btn-sm = buton mic
+             btn-block = pentru latirea butonului
+             -->
+
+            <br>
+
+        </form>
+    </div>
+    {% else %}
+    <h1 class="text-center">Numai admini au voie aici</h1>
+    {% endif %}
+</body>
+{% endblock %}
